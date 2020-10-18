@@ -42,7 +42,7 @@ usersRouter.patch('/avatar', ensureAuthenticated, upload.single('avatar'), async
 
 
   } catch(err) {
-    return res.status(400).json({ error: err.message });
+    return res.status(err.statusCode).json({ error: err.message });
 
   }
 });
