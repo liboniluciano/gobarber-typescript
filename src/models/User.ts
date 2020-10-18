@@ -6,13 +6,13 @@ class User {
   id: string;
 
   @Column()
-  mail: string;
+  name: string;
+
+  @Column()
+  email: string;
 
   @Column()
   password: string;
-
-  @Column('time with time zone')
-  date: Date;
 
   @CreateDateColumn()
   created_at: Date;
