@@ -1,12 +1,12 @@
 import 'reflect-metadata';
 
-import express, { NextFunction, Request, response, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
+import uploadConfig from '@config/upload';
+import AppError from '@shared/errors/AppError';
 import routes from './routes';
-import uploadConfig from './config/upload';
 
-import './database';
-import AppError from './errors/AppError';
+import '@shared/infra/typeorm';
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
       message: err.message,
     });
   }
-  
+
   return res.status(500).json({
     status: 'error',
     message: 'Internal server error',
